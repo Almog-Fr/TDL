@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./public
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    volumes:
+      - ./public:/usr/share/nginx/html
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app/backend
